@@ -95,8 +95,6 @@ end
 
 ### Large image
 
-{% include navigation.html %}
-
 ### Definition lists can be used with HTML syntax.
 
 <dl>
