@@ -91,7 +91,7 @@ end
 - level 1 item
 
 ### Small image
-
+<a href="/files/tetris" download="tetris"> Download Tetris</a>
 
 ### Large image
 
