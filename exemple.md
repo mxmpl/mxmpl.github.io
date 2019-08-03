@@ -95,8 +95,10 @@ end
   <source src="/files/tetris.ogg" type="video/ogg">
   Your browser does not support the video tag.
 </video> 
+
 ### Large image
 {% include navigation.html %}
+
 ### Definition lists can be used with HTML syntax.
 
 <dl>
