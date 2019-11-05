@@ -16,11 +16,10 @@
 title: Maxime Poli
 email: maxime.poli@eleves.enpc.fr
 description: >- # this means to ignore newlines until "baseurl:"
-  test
+  School Projects
 baseurl: "" # the subpath of your site, e.g. /blog
 url: "" # the base hostname & protocol for your site, e.g. http://example.com
 twitter_username: ""
-github_username:  mxmpl
 
 # Build settings
 markdown: kramdown
