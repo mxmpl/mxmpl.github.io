@@ -21,8 +21,8 @@ baseurl: "" # the subpath of your site, e.g. /blog
 url: "" # the base hostname & protocol for your site, e.g. http://example.com
 twitter_username: ""
 linkedin: ""
-github:
-  is_project_page: false
+github: ""
+  
 # Build settings
 markdown: kramdown
 theme: jekyll-theme-minimal
