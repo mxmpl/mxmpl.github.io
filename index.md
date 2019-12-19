@@ -11,7 +11,7 @@ title: School Projects
 
 In this project, I developed an AI which can play Tetris indefinitely by using a genetic algorithm. 
 
-The AI decides the best move for a given Tetris piece by trying out all the possibile moves. The score is computed by doing the dot product between a vector of parameters of the AI and a vector of grid data, composed of the aggregate height, complete lines, holes and bumpiness. Then, I used a genetic algorithm to get the best parameters for the AI.
+The AI looks for the best move for a given Tetris piece by trying out all the possible moves. The score of one move is computed by doing the dot product between a vector of parameters of the AI and a vector of grid data, composed of the aggregate height, complete lines, holes and bumpiness. The genetic algorithm then gets the best parameters for the AI.
 
 
 # Superpixels
