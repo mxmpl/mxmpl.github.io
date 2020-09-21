@@ -39,6 +39,12 @@
 
       <h1 id="vocal-tract-length-normalization">Vocal Tract Length Normalization</h1>
 
+<p>Extraction of speech features from raw audio is the first step for any speech related application. Some speaker normalization techniques exist to reduce the sensibility of extracted features to speaker, thus focusing on speech content. Among them, vocal tract length normalization (VTLN) aims to compensate for the fact that speakers have vocal tracts of different sizes.</p>
+
+<p>This technique computes a learned factor for each speaker that is used to warp the frequency-axis of the spectra. The pipeline has the following steps : extract MFCC, extract VAD, train UBM model, train VTLN model, extract warp factor from trained VTLN model.</p>
+
+<p>More coming soon</p>
+
 
       </section>
       <footer>
