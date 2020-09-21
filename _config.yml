@@ -2,12 +2,10 @@ title: Maxime Poli
 email: maxime.poli@eleves.enpc.fr
 description: >- # this means to ignore newlines until "baseurl:"
     Master's degree student at École des Ponts ParisTech
-markdown: kramdown
 baseurl: "" # the subpath of your site, e.g. /blog
 url: "" # the base hostname & protocol for your site, e.g. http://example.com
 linkedin: ""
 github: ""
-
 theme: jekyll-theme-minimal
 plugins:
   - jekyll-feed
