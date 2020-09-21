@@ -6,23 +6,20 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
 <!-- Begin Jekyll SEO tag v2.5.0 -->
-<title>School Projects | Maxime Poli</title>
+<title>About me | Maxime Poli</title>
 <meta name="generator" content="Jekyll v3.8.5" />
-<meta property="og:title" content="School Projects" />
+<meta property="og:title" content="About me" />
 <meta property="og:locale" content="en_US" />
-<meta name="description" content="School Projects" />
-<meta property="og:description" content="School Projects" />
+<meta name="description" content="Master’s degree student at École des Ponts ParisTech" />
+<meta property="og:description" content="Master’s degree student at École des Ponts ParisTech" />
 <link rel="canonical" href="http://localhost:4000/" />
 <meta property="og:url" content="http://localhost:4000/" />
 <meta property="og:site_name" content="Maxime Poli" />
 <script type="application/ld+json">
-{"@type":"WebSite","url":"http://localhost:4000/","headline":"School Projects","name":"Maxime Poli","description":"School Projects","@context":"http://schema.org"}</script>
+{"@type":"WebSite","url":"http://localhost:4000/","headline":"About me","name":"Maxime Poli","description":"Master’s degree student at École des Ponts ParisTech","@context":"http://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
 
     <link rel="stylesheet" href="/assets/css/style.css?v=">
-    <!--[if lt IE 9]>
-    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.min.js"></script>
-    <![endif]-->
   </head>
   <body>
     <div class="wrapper">
@@ -30,52 +27,63 @@
         <h1><a href="http://localhost:4000/">Maxime Poli</a></h1>
         
         
-
-        <p>School Projects</p>
-
         
-
-        
-
-        
+        <p>Master's degree student at École des Ponts ParisTech</p>
+        <div style="padding-top:2em">
+        <p><a href="vision.html"> Computer Vision </a></p>
+        <p> <a href="speech.html"> Speech Processing </a> </p>
+        <p> <a href="other.html"> Other </a></p>
+        </div>
       </header>
       <section>
 
-      <h1 id="tetris-ai">Tetris AI</h1>
-<video controls="" autoplay="">
-  <source src="/assets/tetris.ogg" type="video/ogg" />
-  Your browser does not support the video tag.
-</video>
+      <p>Hi ! I’m a french Master’s degree student in Applied Mathematics and Computer Science, at the École des Ponts ParisTech. I am currently doing an internship on speech features processing algorithms based on machine learning techniques. You can find my resume <a href="/assets/resume.pdf">here</a>.</p>
+<h1 id="experience">Experience</h1>
+<hr />
+<h2 id="research-engineer-intern">Research Engineer Intern</h2>
+<h3 id="-ens-paris--inria-coml-team--062019---122020"><span> ENS Paris / INRIA, CoML team </span> 06/2019 - 12/2020</h3>
 
-<p>In this project, I developed an AI which can play Tetris indefinitely by using a genetic algorithm.</p>
+<p>I a currently doing an internship in the Cognitive Machine Learning team, a joint ENS and INRIA research team at the intersection between cogntitive and computer science. I am implementing speech features extraction algorithms in <strong><a href="https://docs.syntheticlearner.net/shennong/">shennong</a></strong>, a toolbox based on <a href="https://kaldi-asr.org">Kaldi</a> in development in CoML.</p>
 
-<p>The AI looks for the best move for a given Tetris piece by trying out all the possible moves. The score of one move is computed by doing the dot product between a vector of parameters of the AI and a vector of grid data, composed of the aggregate height, complete lines, holes and bumpiness. The genetic algorithm then gets the best parameters for the AI.</p>
+<p>The first speech processing technique I am implementing is the <em>vocal tract length normalization</em>, a speech normalization technique aiming to compensate for the fact that speakers have vocal tracts of different sizes, by warping the frequency-axis of the spectra of the speaker by a learned factor (click <a href="./speech.html">here</a> for more details).</p>
 
-<h1 id="superpixels">Superpixels</h1>
-<!-- ![Superpixels](/assets/poisson.jpeg) -->
+<p>Next, I will implement in the toolbox a <em>pitch detection algorithm based on a deep convolutional neural network</em> operating directly on the time-domain waveform input, using the <a href="https://github.com/marl/crepe">CREPE</a> model.</p>
 
-<p><img src="assets/poisson.jpeg" alt="Poisson" style="height:323px;width:533px;" /></p>
+<h2 id="student-facilitator">Student facilitator</h2>
+<h3 id="-google-explore-ml--112019---082020"><span> Google, Explore ML </span> 11/2019 - 08/2020</h3>
 
-<p>Image segmentation with superpixels allows for a great simplification of images while keeping their visual characteristics, making it a highly valued asset in computer vision and learning applications. Two types of such methods are outlined : graph-based and gradient-ascent-based algorithms.</p>
+<p>Last November, I had the opportunity to be a part of Explore Machine Learning, a Google-sponsored program for students to get started with machine learning. As a student facilitator, I organized and facilitated workshops at my campus to help other students learn the basic concepts of machine learning and walk towards some more advanced concepts.</p>
 
-<p>In this paper we focus on the gradient-ascent-based SLIC
-(Simple Linear Image Clustering), which offers segmentation based on a given relative weight of proximity over similarity for pixel clustering and given number of superpixels. This ensures uniformity and compactness of the resulting superpixels, which is quite relevant for shape recognition purposes. The SCALP (Super Pixels with Contour Adherence using Linear Path) takes into account a contour map of the picture for higher visual accuracy in the segmentation. You can <a href="/assets/superpixels.pdf">get the PDF</a> in French.</p>
+<p>I organized two workshops, for around one hundred students in total; helping them understand the core ideas of ML and implement their first models with Keras. At the end, I shared feedback and best practices with the Explore ML Team at Google and with the other facilitators.</p>
 
-<h1 id="inpainting">Inpainting</h1>
+<h1 id="education">Education</h1>
+<hr />
+<h2 id="masters-degree-applied-mathematics-and-computer-science">Master’s degree, Applied mathematics and Computer Science</h2>
+<h3 id="-école-des-ponts-paristech--2018---2022"><span> École des Ponts ParisTech </span> 2018 - 2022</h3>
+<p>I am currently a second year student (equivalent to a first year of MSc) at the École des Ponts ParisTech in the department of applied mathematics and computer science. I notably followed those courses this past year:</p>
+<ul>
+  <li>Machine Learning, Computer Vision, Operational Research</li>
+  <li>Statistics, Optimization, Stochastic Processes</li>
+  <li>Evolution Equations, Functional Analysis, Control Theory</li>
+</ul>
 
-<p><img src="assets/inpainting.jpg" alt="Inpainting" /></p>
+<h2 id="preparatory-classes">Preparatory classes</h2>
+<h3 id="-lycée-montaigne--2016---2018"><span> Lycée Montaigne </span> 2016 - 2018</h3>
+<p>Before that, I spent two years in preparatory classes for the highly competitive entrance exams to the <em>Grandes Écoles</em>, consisting of intense preparation in maths and physics.</p>
 
-<p>We studied an image inpainting algorithm. This algorithm removes large objects from digital images, while filling the hole that is left behind in a visually plausible way by propagating texture and structure information simultaneously. You can <a href="/assets/inpainting.pdf">get the PDF</a> in French.</p>
+<h1 id="voluntary-work">Voluntary Work</h1>
+<hr />
+<h2 id="vp-social-open-mindedness">VP Social Open-mindedness</h2>
+<h3 id="-développonts--2019---2020"><span> Dévelop’Ponts </span> 2019 - 2020</h3>
+<p>I organized organized voluntary tutoring sessions for around 80 pupils between 11 and 17 years old from local schools, to make them discover science in a fun way. I prepared experiments with our team of 5 members among the organization and, as Vice-president, I planned museum visits and managed relationships between Dévelop’ponts and the École des Ponts. Experiences included 3D printing, introduction to programming, physics and chemistry experiments, Arduino projects…</p>
 
+<p>I also organized with Dévelop’Ponts voluntary homework help sessions for high-school pupils.</p>
 
 
       </section>
       <footer>
-        
-        <p><small>Hosted on GitHub Pages &mdash; Theme by <a href="https://github.com/orderedlist">orderedlist</a></small></p>
-      </footer>
+          <p><small>Hosted on GitHub Pages &mdash; Theme by <a href="https://github.com/orderedlist">orderedlist</a></small></p>
+    </footer>
     </div>
-    <script src="/assets/js/scale.fix.js"></script>
-    
   </body>
 </html>
