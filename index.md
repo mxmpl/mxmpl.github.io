@@ -2,7 +2,7 @@
 layout: perso 
 title: About me 
 ---
-Hi ! I'm a french Master's degree student in Applied Mathematics and Computer Science, at the École des Ponts ParisTech. I am currently doing an internship on speech features processing algorithms based on machine learning techniques. You can find my resume [here](/assets/resume.pdf).
+Hi ! I'm a french Master's degree student in Applied Mathematics and Computer Science, at the École des Ponts ParisTech. I am currently doing an internship on speech features processing algorithms based on machine learning techniques. <!-- You can find my resume [here](/assets/resume.pdf). !-->
 # Experience 
 * * *
 ## Research Engineer Intern 
