@@ -8,7 +8,7 @@ In this project, I worked with other students from my department at the École d
 Posters usually follow certain codes, and one can often guess the genre of a movie using only the poster.
 
 <img src="assets/posters/comediebleue.png">
-> Some french posters of comedies
+> Some french comedy posters
 
 Given the database we had, we kept **7 genres** (Animation, Action, Comedy, Dramatic Comedy, Documentary, Drama, Thriller), with one unique genre per film. We had at the end 4900 posters evenly distributed. We used data augmentation to increase the diversity of the training set, by applying random transformations such as image rotation, cropping, or adjust the hue of images by a random factor.
 
@@ -54,7 +54,7 @@ The core principle is to do a k-means clustering with a well chosen distance bew
 
 ## SLIC
 
-The easiest way to do that is the SLIC (Simple Linear Image Clustering) method, for which the distance for the k-means algorithm is the sum of the spatial distance and the colro distance multiplied by a chosen parameter. Typically, the distance $$d_{SLIC}$$ computed bewteen one pixel and the barycenter of a cluster $$C_k$$ is
+The easiest way to do that is the SLIC (Simple Linear Image Clustering) method ([Achanta et al., 2012](https://infoscience.epfl.ch/record/149300)), for which the distance for the k-means algorithm is the sum of the spatial distance and the colro distance multiplied by a chosen parameter. Typically, the distance $$d_{SLIC}$$ computed bewteen one pixel and the barycenter of a cluster $$C_k$$ is
 
 \\[d_{SLIC} = d_{c} + \frac{m}{S} d_{s} \\]
 
@@ -67,7 +67,7 @@ As $$m$$ goes up, the superpixels get more and more convex but they stick less a
 
 ## SCALP
 
-A more sophisticated way to do such segmentation is with the SCALP (Super Pixels with Contour Adherence using Linear Path) method. It takes into account a contour map of the picture for higher visual accuracy in the segmentation, by sticking more to the countours.
+A more sophisticated way to do such segmentation is with the SCALP (Super Pixels with Contour Adherence using Linear Path) method ([Giraud et al., 2016](https://arxiv.org/abs/1903.07149)). It takes into account a contour map of the picture for higher visual accuracy in the segmentation, by sticking more to the countours.
 
 The spatial distance is the same but we now take into account a new distance $$d_{c}(p,C_k,P_p^k)$$ on the linear path $$P_p^k$$ bewteen the barycenter of the cluster $$C_k$$ and the pixel $$p$$, to improve the smiliraty of the colors of the pixels in one cluster. We now have:
  
