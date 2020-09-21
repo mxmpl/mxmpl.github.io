@@ -2,7 +2,7 @@
 layout: perso
 title: Speech Processing
 ---
-
+test
 # Vocal Tract Length Normalization
 
 Extraction of speech features from raw audio is the first step for any speech related application. Some speaker normalization techniques exist to reduce the sensibility of extracted features to speaker, thus focusing on speech content. Among them, vocal tract length normalization (VTLN) aims to compensate for the fact that speakers have vocal tracts of different sizes. 
