@@ -46,20 +46,81 @@ The same can be done for every genre, and this can explain a big part of the err
 
 # Superpixels
 
- <img src="assets/poisson.jpeg" alt="Poisson" style="height:323px;width:533px;"> 
+ <img src="assets/superpixels/poisson.jpeg" alt="Poisson" style="height:323px;width:533px;"> 
 
 In this project we implemented in C++ an image segmentation with superpixels technique. Image segmentation with superpixels allows for a great simplification of images while keeping their visual characteristics.
 
-The core principle is to do a k-means clustering with a well chosen distance bewteen the pixels. The easiest way to do that is the SLIC (Simple Linear Image Clustering) method, for which the distance for the k-means algorithm is the sum of the spatial distance and the RGB (or LAB) distance multiplied by a chosen parameter.
+The core principle is to do a k-means clustering with a well chosen distance bewteen the pixels. 
+
+## SLIC
+
+The easiest way to do that is the SLIC (Simple Linear Image Clustering) method, for which the distance for the k-means algorithm is the sum of the spatial distance and the colro distance multiplied by a chosen parameter. Typically, the distance $$d_{SLIC}$$ computed bewteen one pixel and the barycenter of a cluster $$C_k$$ is
+
+\\[d_{SLIC} = d_{c} + \frac{m}{S} d_{s} \\]
+
+where $$d_c$$ is the euclidean distance bewteen the colors of two pixels (in the RGB or LAB space), $$d_s$$ is the spatial euclidean distance, $$S = \sqrt{N/K} $$ with $$N$$ the number of pixels and $$K$$ the number of clusters, and $$m$$ a chosen coefficient.
+
+<img src="assets/superpixels/slic.png"> 
+> Some results for $$K = 200$$
+
+As $$m$$ goes up, the superpixels get more and more convex but they stick less and less to the colors.
+
+## SCALP
 
 A more sophisticated way to do such segmentation is with the SCALP (Super Pixels with Contour Adherence using Linear Path) method. It takes into account a contour map of the picture for higher visual accuracy in the segmentation, by sticking more to the countours.
-<!--Rajouter les équations des distances, un peu plus de détails!-->
 
+The spatial distance is the same but we now take into account a new distance $$d_{c}(p,C_k,P_p^k)$$ on the linear path $$P_p^k$$ bewteen the barycenter of the cluster $$C_k$$ and the pixel $$p$$, to improve the smiliraty of the colors of the pixels in one cluster. We now have:
+ 
+\\[ d_{c}(p,C_k,P_p^k)  = \lambda d_c(p,C_k)+(1-\lambda) \frac{1}{\| P_p^k \|}  \sum_{q \in P_p^k}d_c(q,C_k)\\]
+
+with $$\lambda\in [0,1]$$ the weight of the linear path.
+
+To ensure to stick to the shape, we consider a contour map $$\mathrm{C}$$, such that $$\mathrm{C}(p)=1$$ if a contour is at the pixel $$p$$ and $$\mathrm{C}(p) = 0$$ else. We are now going to ponder the distance by $$d_{\mathrm{C}}$$, with $$\gamma \geq 0$$ that gives the influence of the contour:
+ 
+\\[d_{\mathrm{C}}(P_p^k) = 1 + \gamma \max_{q \in P_p^k} \mathrm{C}(q) \\]
+
+The final distance to minimize is thus:
+\\[ d_{SCALP}(p,C_k) = ( d_{c}(p,C_k,P_p^k)+\frac{m}{S}d_s(p,C_k) ) d_{\mathrm{C}}(P_p^k)\\]
+
+This distance gives a better compromise between the spatial distance and the color distance than with the SLIC method, but we need to compute the linear path each time we consider a pixel (or compute all possible path once) which makes this method a bit slower.
+<img src="assets/superpixels/versus.png">
+> Some results with $$m = 50$$ and $$K = 200$$
 # Inpainting
 
- <img src="assets/inpainting.jpg" alt="Inpainting"> 
+ <img src="assets/inpainting/boat.jpg" alt="Inpainting"> 
 
-In this project we implemented in C++ an image inpainting algorithm. This algorithm removes large objects from images, while filling the hole that is left behind in a visually plausible way by propagating texture and structure information simultaneously. The method we used is based on patch similarities within the image.
-<!--Plus de détails!-->
+In this project we implemented in C++ an image inpainting algorithm (see [Criminisi et al., 2004][1]). This algorithm removes large objects from images, while filling the hole that is left behind in a visually plausible way by propagating texture and structure information simultaneously. The method we used is based on patch similarities within the image. 
+The core idea is that to fill up a hole in the image using only the remaining pixels, we have to iteratively fill up the pixels along the countour of the hole by looking at which other pixel in the image they most correspond to.
 
+[1]: <https://ieeexplore.ieee.org/document/1323101> "Inpainting"
 
+First, given an input image $$I$$, the user selects a target region $$\Omega$$ to be removed and filled. The source region $$\Phi$$ that we will use to fill $$\Omega$$ can be defined as the rest of the image or just a portion of it. For each pixel $$\mathbf{p}$$, $$\psi_{\mathbf{p}}$$ is the patch centered on $$\mathbf{p}$$, typically of size $$ 9 \times 9$$.
+
+For each patch $$\psi_{\mathbf{p}}$$, centered on $$\mathbf{p} \in \delta \Omega$$, its *priority* $$P(\mathbf{p})$$ is
+\\[P(\mathbf{p}) = C(\mathbf{p}) D(\mathbf{p}) \\]
+where $$C(\mathbf{p})$$ is the *confidence* term and $$D(\mathbf{p})$$ is the *data* term, defined as:
+
+\\[C(\mathbf{p}) = \frac{1}{\| \psi_{\mathbf{p}} \|} \sum_{\mathbf{q} \in \Phi \cap \psi_{\mathbf{p}}} C(\mathbf{q}) \\]
+\\[D(\mathbf{p}) = \frac{1}{\alpha} \| \nabla I^{\perp}_{\mathbf{p}} \cdot \mathbf{n_p} \| \\] 
+
+The confidence term is set as $$C(\mathbf{p}) = 0$$ if $$\mathbf{p} \in \Omega$$ and $$1$$ if $$\mathbf{p} \notin \Omega$$. This term mesures how confident we are of the information around $$\mathbf{p}$$, given how it propagated. The goal is to fill in the first place the patches that already have a big part of them filled, and even more if they were filled early or if they were not in $$\Omega$$.
+
+As for the data term, $$\mathbf{n_p}$$ is a unit vector orthogonal to $$\delta \Omega$$ in the point $$\mathbf{p}$$ and $$\perp$$ denotes the orthogonal operator. This term boosts the priority of patches where a line of same luminosity (related to the vector $$\nabla I^\perp_{\mathbf{p}}$$) flow into.
+
+Once every priority is computed, we choose the patch $$\psi_{\mathbf{\hat{p}}}$$ with the highest priority and we look for the patch that is the most similar:
+
+\\[ \psi_{\mathbf{\hat{p}}} = \arg \min_{\psi_{\mathbf{q}} \in \Phi} d(\psi_{\mathbf{\hat{p}}}, \psi_{\mathbf{q}}) \\]
+
+where $$d$$ is the sum of the euclidean distances bewteen the corresponding pixels in the patches is the RGB or LAB space. Now that a patch has been filled, before the next iteration we update the confidence terms: each pixel in $$\Omega$$ and this patch get the same confidence as $$\mathbf{\hat{p}}$$.
+
+\\[ \forall \mathbf{p} \in \Omega \cap \psi_{\mathbf{\hat{p}}}, C(\mathbf{p}) = C(\mathbf{\hat{p}}) \\]
+
+The domain $$\Omega$$ is now smaller ($$\Omega^{t+1} = \Omega^{t} \backslash \psi_{\mathbf{\hat{p}}}$$), and we continue until $$\Omega$$ is empty and the region in entirely filled. You can find below some of our results:
+ <img src="assets/inpainting/goat.jpg"> 
+
+ As one can predict, it works really well with a plain background. It is very easy to find similar patch when the object to remove has clear frontiers with the rest of the image, and when there is no overlapping.
+ <img src="assets/inpainting/eiffel.jpg"> 
+
+It even works when the background is more of a texture (like the flowers below). However, as you can see, if there is some overlapping (here a woman is holding the baby we chose to remove) there wil be some "leakage" (for the coat sleeves in this example).
+
+ <img src="assets/inpainting/baby.jpg"> 
