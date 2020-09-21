@@ -9,7 +9,7 @@ github: ""
 
 sections: Computer Vision, Speech Processing
 # Build settings
-markdown: kramdown
+markdown: redcarpet
 theme: jekyll-theme-minimal
 plugins:
   - jekyll-feed
