@@ -17,7 +17,7 @@ Each genome plays a certain amount of moves. At the end, we cross the parameters
 
 I used 10 generations, each with 100 genomes that plays at most 500 moves (less if they lose the game). For the next generation, I kept the 70% best genomes. The 30% left are new genomes that are children of two parent genomes, with their parameters as the sum of the parents' parameters weighted by their respective score. For each child, I randomly select 10% of the current genomes and the two best genomes are the future parents.
 
-At each turn $$t$$, the genome knows the state of the game (for every cell it knows if it contains a block or not), the tetromino that is coming and the next one. This is used to know what are the valid moves, and to get a "data vector" $$x^{m} \in \mathbb{R}^4$$ after the move $$m$$ is played. $$m(u,v)$$ is a move played at time $$v$$ given the information at time $$u$$and the moves played in the meantime. We have for a data vector obtained after playing a move $$m$$:
+At each turn $$t$$, the genome knows the state of the game (for every cell it knows if it contains a block or not), the tetromino that is coming and the next one. This is used to know what are the valid moves, and to get a "data vector" $$x^{m} \in \mathbb{R}^4$$ after the move $$m$$ is played. We have for a data vector obtained after playing a move $$m$$:
 
 * $$x^m_1$$ is the sum of the heights of each column of the grid.
 * $$x^m_2$$ is the number of lines that are completed by playing the move $$m$$.
