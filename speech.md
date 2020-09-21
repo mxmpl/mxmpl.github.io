@@ -8,7 +8,7 @@ Extraction of speech features from raw audio is the first step for any speech re
 
 This technique computes a learned factor for each speaker that is used to warp the frequency-axis of the spectra. The pipeline has the following steps : extract MFCC, extract VAD, train UBM model, train VTLN model, extract warp factor from trained VTLN model. 
 
-(include audio)
+<!--include audio-->
 
 ## Mel-Frequency Cepstral Coefficients (MFCC)
 
@@ -26,7 +26,7 @@ To reduce spectral leakage, it is needed to apply a [window function](https://en
 ### Spectrogram, filter banks and MFCC
 We then compute the [spectrogram](https://en.wikipedia.org/wiki/Spectrogram) by doing a short time FFT on each frame.
 
-(include spectrogram)
+<!--include spectrogram-->
 
 The final step before being able to compute MFCCs is to apply triangular filters on a [mel scale](https://en.wikipedia.org/wiki/Mel_scale) to the power spectrum to extract frequency bands. A mel is a unit of measure based on the human ears perceived frequency. One of the formulas to convert $$f$$ hertz into $$m$$ mels is: 
 
@@ -37,17 +37,17 @@ The final step before being able to compute MFCCs is to apply triangular filters
 
 This gives us the [filter banks](https://en.wikipedia.org/wiki/Filter_bank)
 
-(include filterbanks)
+<!--include filterbanks-->
 
 Finally, by taking the log of the spectrum, applying a [discret cosine transform](https://en.wikipedia.org/wiki/Discrete_cosine_transform) and by keeping the resulting cepstral coefficients 2-13 and discarding the rest, we get the [Mel-frequency Cepstral Coefficients](https://en.wikipedia.org/wiki/Mel-frequency_cepstrum).
 
-(include mfcc)
+<!--include mfcc-->
 
-### CMVN
+#### CMVN
 Optionally, we can do Cepstral Mean Variance Normalization to those features to minimize noise contamination by transforming the coefficients to have the same statistics (mean 0, variance 1).
 
 
-### Voice Activity Detection (VAD)
+## Voice Activity Detection (VAD)
 Before training the UBM and the VTLN model, we need to remove frames that do not contain speech using VAD. One of the common and easy way to do this is to use the energy-based VAD, and to remove all frames where the energy is below a given threshold.
 
 ## Train UBM
@@ -57,3 +57,6 @@ A Universal Background Model - Gaussian Mixtures Model (UBM-GMM) is a speaker-in
 It is trained on a large quantity of speech from a wide population; the parameters of the GMM are computed iteratively via [Expectation-maximization](https://en.wikipedia.org/wiki/Expectation%E2%80%93maximization_algorithm) (EM) algorithm.
 
 ## Train VTLN model
+Finally we can train the VTLN model. I used the procedure followed by Kaldi to train a Linear VTLN model, click [here](https://kaldi-asr.org/doc/transform.html#transform_lvtln) for more details.
+
+*(I will update this explanation of the VTLN pipeline soon)*

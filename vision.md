@@ -85,6 +85,7 @@ The final distance to minimize is thus:
 This distance gives a better compromise between the spatial distance and the color distance than with the SLIC method, but we need to compute the linear path each time we consider a pixel (or compute all possible path once) which makes this method a bit slower.
 <img src="assets/superpixels/versus.png">
 > Some results with $$m = 50$$ and $$K = 200$$
+
 # Inpainting
 
  <img src="assets/inpainting/boat.jpg" alt="Inpainting"> 
