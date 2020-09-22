@@ -9,7 +9,7 @@ title: Other
   Your browser does not support the video tag.
 </video> 
 
-In this project, I developed a model that can play Tetris by using a genetic algorithm.
+In this project, I implemented a model in C++ that can play Tetris by using a genetic algorithm. It is adapted from [this project](https://codemyroad.wordpress.com/2013/04/14/tetris-ai-the-near-perfect-player/).
 
 Before getting the final model, we consider one "generation" that consists of multiple "genomes" that each have their own parameters $$\theta \in \mathbb{R}^4$$ with $$ -1 \leq \theta_i \leq 1$$. 
 
