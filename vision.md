@@ -110,7 +110,7 @@ As for the data term, $$\mathbf{n_p}$$ is a unit vector orthogonal to $$\delta \
 
 Once every priority is computed, we choose the patch $$\psi_{\mathbf{\hat{p}}}$$ with the highest priority and we look for the patch that is the most similar:
 
-\\[ \psi_{\mathbf{\hat{p}}} = \arg \min_{\psi_{\mathbf{q}} \in \Phi} d(\psi_{\mathbf{\hat{p}}}, \psi_{\mathbf{q}}) \\]
+\\[ \psi_{\mathbf{\hat{q}}} = \arg \min_{\psi_{\mathbf{q}} \in \Phi} d(\psi_{\mathbf{\hat{p}}}, \psi_{\mathbf{q}}) \\]
 
 where $$d$$ is the sum of the euclidean distances bewteen the corresponding pixels in the patches is the RGB or LAB space. Now that a patch has been filled, before the next iteration we update the confidence terms: each pixel in $$\Omega$$ and this patch get the same confidence as $$\mathbf{\hat{p}}$$.
 
