@@ -13,7 +13,7 @@ In this project, I developed a model that can play Tetris by using a genetic alg
 
 Before getting the final model, we consider one "generation" that consists of multiple "genomes" that each have their own parameters $$\theta \in \mathbb{R}^4$$ with $$ -1 \leq \theta_i \leq 1$$. 
 
-Each genome plays a certain amount of moves. At the end, we cross the parameters of the best genomes to obtain a new generation. We repeat this until we have a genome that plays well enough.
+Each genome plays a certain amount of moves. At the end, we cross the parameters of the best genomes to obtain a new generation. We repeat this until we have a genome that plays well enough: the fitness function is simply the number of lines completed.
 
 I used 10 generations, each with 100 genomes that plays at most 500 moves (less if they lose the game). For the next generation, I kept the 70% best genomes. The 30% left are new genomes that are children of two parent genomes, with their parameters as the sum of the parents' parameters weighted by their respective score. For each child, I randomly select 10% of the current genomes and the two best genomes are the future parents.
 
