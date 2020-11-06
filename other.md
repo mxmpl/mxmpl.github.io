@@ -35,6 +35,5 @@ The parameters converged surprisingly quickly, at in just three generations I ha
 \\[ \theta = \begin{pmatrix} -0.590814 & \\ 0.491538 & \\ -0.337213 & \\ -0.517931 \end{pmatrix}\\]
 
 A genome with those parameters can play indefinitely.
-# Generating all tilings of rectangles by dominos
 
-Coming soon 
+<> Generating all tilings of rectangles by dominos
